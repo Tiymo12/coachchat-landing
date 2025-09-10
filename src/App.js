@@ -17,7 +17,6 @@ function App() {
           Gewinne mehr Kunden, spare Zeit und steigere deine Reichweite – mit
           deinem eigenen AI-Chatbot.
         </p>
-        <button className="btn">Demo anfragen</button>
       </section>
 
       {/* Features */}
@@ -36,10 +35,34 @@ function App() {
         </div>
       </section>
 
-      {/* Call to Action */}
+      {/* Call to Action / Demo-Formular */}
       <section className="cta">
         <h2>Bereit für deinen AI-Chatbot?</h2>
-        <button className="btn">Jetzt Demo sichern</button>
+        <form
+          action="https://formspree.io/f/xdklbbpr"
+          method="POST"
+          target="_blank"
+        >
+          <input
+            type="text"
+            name="name"
+            placeholder="Dein Name"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Deine E-Mail"
+            required
+          />
+          <textarea
+            name="message"
+            placeholder="Deine Nachricht"
+            required
+          ></textarea>
+          <button type="submit" className="btn">Demo anfragen</button>
+        </form>
+        <p>Du bekommst danach eine Bestätigung per E-Mail.</p>
       </section>
 
       {/* Footer */}
