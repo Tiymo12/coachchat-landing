@@ -1,3 +1,4 @@
+import ChatWidget from "./components/ChatWidget";
 import React from "react";
 import "./App.css";
 
@@ -69,6 +70,10 @@ function App() {
       <footer className="footer">
         <p>© 2025 CoachChat AI – Alle Rechte vorbehalten</p>
       </footer>
+
+<ChatWidget persona={`Tonfall: motivierend, knapp. Du repräsentierst einen Fitness-Coach mit 50k Followern.`} />
+
+
     </div>
   );
 }
