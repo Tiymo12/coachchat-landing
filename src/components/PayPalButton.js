@@ -8,17 +8,15 @@ export default function PayPalButton() {
 
     const renderButton = () => {
       const el = document.getElementById(CONTAINER_ID);
-      if (el) el.innerHTML = ""; // doppelte Buttons verhindern
-      window.paypal?.HostedButtons({
-        hostedButtonId: "AL453FK92TKPL",
-      }).render(`#${CONTAINER_ID}`);
+      if (el) el.innerHTML = ""; // doppelte Renders verhindern
+      if (window.paypal?.HostedButtons) {
+        window.paypal
+          .HostedButtons({ hostedButtonId: "AL453FK92TKPL" })
+          .render(`#${CONTAINER_ID}`);
+      }
     };
 
-    if (window.paypal) {
-      renderButton();
-      return;
-    }
-
+    // SDK nur einmal einbinden
     let script = document.getElementById(SDK_ID);
     if (!script) {
       script = document.createElement("script");
@@ -29,14 +27,21 @@ export default function PayPalButton() {
       script.onload = renderButton;
       document.body.appendChild(script);
     } else {
-      script.addEventListener("load", renderButton, { once: true });
       if (script.readyState === "complete") renderButton();
+      else script.addEventListener("load", renderButton, { once: true });
     }
   }, []);
 
+  // WICHTIG: Container eine brauchbare Breite geben (sonst bricht Text vertikal)
   return (
-    <div style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
-      <div id="paypal-container-AL453FK92TKPL"></div>
+    <div style={{ display: "flex", justifyContent: "center", marginTop: 20 }}>
+      <div
+        id="paypal-container-AL453FK92TKPL"
+        style={{
+          width: 320,          // <- feste Arbeitsbreite
+          maxWidth: "100%",    // responsiv
+        }}
+      />
     </div>
   );
 }
