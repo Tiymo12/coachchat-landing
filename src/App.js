@@ -1,4 +1,3 @@
-import PayPalButton from "./components/PayPalButton";
 import ChatWidget from "./components/ChatWidget";
 import React from "react";
 import "./App.css";
@@ -37,11 +36,34 @@ function App() {
         </div>
       </section>
 
-      {/* Call to Action / PayPal-Button */}
+      {/* Call to Action / Demo-Formular */}
       <section className="cta">
-        <h2>Starte jetzt mit deinem eigenen Coach-Bot!</h2>
-        <PayPalButton />
-        <p>Die Bezahlung läuft sicher über PayPal.</p>
+        <h2>Bereit für deinen AI-Chatbot?</h2>
+        <form
+          action="https://formspree.io/f/xdklbbpr"
+          method="POST"
+          target="_blank"
+        >
+          <input
+            type="text"
+            name="name"
+            placeholder="Dein Name"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Deine E-Mail"
+            required
+          />
+          <textarea
+            name="message"
+            placeholder="Deine Nachricht"
+            required
+          ></textarea>
+          <button type="submit" className="btn">Demo anfragen</button>
+        </form>
+        <p>Du bekommst danach eine Bestätigung per E-Mail.</p>
       </section>
 
       {/* Footer */}
